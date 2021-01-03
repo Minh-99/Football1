@@ -1,0 +1,49 @@
+.mat-tab-group {
+  margin-bottom: 48px;
+}
+@media only screen and (max-width: 600px){
+  .Stadium {
+    display: none;
+  }
+  .live{
+    text-align: center;
+  }
+  .match2{
+    word-break: break-all;
+  }
+  .match1{
+    word-break: break-all;
+  }
+  .day-time{
+    display: block !important;
+  }
+  .time{
+    display: none !important;
+  }
+  .match1{
+    font-weight: normal !important;
+    font-size: medium !important;
+  }
+
+}
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+th{
+  font-weight: bold;
+  font-size: large;
+}
+.day-time{
+  display: none;
+}
+.Rank1{
+  background-color: aqua;
+  border-radius: 50%;
+
+}

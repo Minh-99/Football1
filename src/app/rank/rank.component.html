@@ -1,0 +1,211 @@
+<!-- -------Premier League------- -->
+<div class="container">
+  <nz-layout class="layout" style="margin-right: 10px">
+    <nz-sider
+      nzCollapsible
+      nzBreakpoint="lg"
+      style="background-color:  #6c757d"
+      [nzCollapsedWidth]="0"
+    >
+    <div class="btn-group-vertical" style="width:100%">
+      <button
+        type="button"
+        [routerLink]="['/Rank']"
+        routerLinkActive="router-link-active"
+        class="btn btn-secondary active"
+      >
+        Premier League
+      </button>
+      <button
+        type="button"
+        [routerLink]="['/Rank/LaLiga']"
+        routerLinkActive="router-link-active"
+        class="btn btn-secondary"
+      >
+        LaLiga
+      </button>
+      <button
+        type="button"
+        [routerLink]="['/Rank/SerieA']"
+        routerLinkActive="router-link-active"
+        class="btn btn-secondary"
+      >
+        Serie A
+      </button>
+      <button
+        type="button"
+        [routerLink]="['/Rank/Bundesliga']"
+        routerLinkActive="router-link-active"
+        class="btn btn-secondary"
+      >
+        Bundesliga
+      </button>
+      <button
+        type="button"
+        [routerLink]="['/Rank/Ligue1']"
+        routerLinkActive="router-link-active"
+        class="btn btn-secondary"
+      >
+        France Ligue 1
+      </button>
+      <button
+        type="button"
+        [routerLink]="['/Rank/ChampionsLeague']"
+        routerLinkActive="router-link-active"
+        class="btn btn-secondary"
+      >
+        UEFA Champions League
+      </button>
+      <button
+        type="button"
+        [routerLink]="['/Rank/EuropaLeague']"
+        routerLinkActive="router-link-active"
+        class="btn btn-secondary"
+      >
+        UEFA Europa League
+      </button>
+      <button
+        type="button"
+        [routerLink]="['/Rank/WorldCup']"
+        routerLinkActive="router-link-active"
+        class="btn btn-secondary"
+      >
+        World Cup
+      </button>
+      <button
+        type="button"
+        [routerLink]="['/Rank/EURO']"
+        routerLinkActive="router-link-active"
+        class="btn btn-secondary"
+      >
+        EURO
+      </button>
+      <button
+        type="button"
+        [routerLink]="['/Rank/CopaAmerica']"
+        routerLinkActive="router-link-active"
+        class="btn btn-secondary"
+      >
+        Copa America
+      </button>
+      <button
+        type="button"
+        [routerLink]="['/Rank/CAN']"
+        routerLinkActive="router-link-active"
+        class="btn btn-secondary"
+      >
+        Africa Cup of Nations
+      </button>
+      <button
+        type="button"
+        [routerLink]="['/Rank/AsianCup']"
+        routerLinkActive="router-link-active"
+        class="btn btn-secondary"
+      >
+        AFC Asian Cup
+      </button>
+      <button
+        type="button"
+        [routerLink]="['/Rank/V.League']"
+        routerLinkActive="router-link-active"
+        class="btn btn-secondary"
+      >
+        V.League 1
+      </button>
+    </div>
+    </nz-sider>
+    <nz-layout>
+      <nz-content>
+        <table
+          mat-table
+          [dataSource]="dataSource"
+          matSort
+          class="mat-elevation-z8"
+        >
+          <!-- Position Column -->
+          <ng-container matColumnDef="Rank">
+            <th
+              style="padding-left: 40px"
+              mat-header-cell
+              *matHeaderCellDef
+              mat-sort-header
+            >
+              No.
+            </th>
+            <td
+              style="padding-left: 40px"
+              mat-cell
+              *matCellDef="let element"
+              [ngClass]="{
+                Rank1: element.Rank <= 4,
+                Rank2: element.Rank === 5,
+                Rank3: element.Rank === 6,
+                Rank4: element.Rank > 17
+              }"
+            >
+              {{ element.Rank }}
+            </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Club</th>
+            <td mat-cell *matCellDef="let element">
+              <img
+                [src]="'https://upload.wikimedia.org/wikipedia/' + element.logo"
+                class="mr-2"
+                style="width: 20px"
+              />{{ element.name }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Match">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>P</th>
+            <td mat-cell *matCellDef="let element">{{ element.Match }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="Win">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>W</th>
+            <td mat-cell *matCellDef="let element">{{ element.Win }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="Draw">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>D</th>
+            <td mat-cell *matCellDef="let element">{{ element.Draw }}</td>
+          </ng-container>
+          <ng-container matColumnDef="Lose">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>L</th>
+            <td mat-cell *matCellDef="let element">{{ element.Lose }}</td>
+          </ng-container>
+          <ng-container matColumnDef="GF">
+            <th class="GF" mat-header-cell *matHeaderCellDef mat-sort-header>
+              GF
+            </th>
+            <td class="GF" mat-cell *matCellDef="let element">
+              {{ element.GF }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="GA">
+            <th class="GA" mat-header-cell *matHeaderCellDef mat-sort-header>
+              GA
+            </th>
+            <td class="GA" mat-cell *matCellDef="let element">
+              {{ element.GA }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="GD">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>+/-</th>
+            <td mat-cell *matCellDef="let element">{{ element.GD }}</td>
+          </ng-container>
+          <ng-container matColumnDef="Point">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>PTS</th>
+            <td mat-cell *matCellDef="let element">{{ element.Point }}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </nz-content>
+    </nz-layout>
+  </nz-layout>
+</div>

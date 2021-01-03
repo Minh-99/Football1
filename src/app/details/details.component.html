@@ -1,0 +1,115 @@
+  <!-- Bottom Bar Start -->
+  <div class="bottom-bar">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-3">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="img/logo.png" alt="Logo">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="search">
+                    <input type="text" placeholder="Search">
+                    <button><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="user">
+                    <a href="wishlist.html" class="btn wishlist">
+                        <i class="fa fa-heart"></i>
+                        <span>(0)</span>
+                    </a>
+                    <a href="cart.html" class="btn cart">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span>(0)</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Bottom Bar End -->
+
+<!-- Breadcrumb Start -->
+<div class="breadcrumb-wrap">
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Products</a></li>
+            <li class="breadcrumb-item active">Cart</li>
+        </ul>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+
+<!-- Cart Start -->
+<div class="cart-page">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8">
+              <button nz-button (click)="addRow()" nzType="primary">Add</button>
+              <br />
+              <br />
+              <nz-table #editRowTable nzBordered [nzData]="listOfData">
+                <thead>
+                  <tr>
+                    <th nzWidth="30%">Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Remove</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of editRowTable.data" class="editable-row">
+                    <td>{{ data.name }}</td>
+                    <td>{{ data.age *2 }}</td>
+                    <td>
+                      <div class="editable-cell" [hidden]="editId === data.id" (click)="startEdit(data.id)">
+                        {{ data.age }}
+                      </div>
+                      <input [hidden]="editId !== data.id" type="text" nz-input [(ngModel)]="data.age" (blur)="stopEdit()" />
+                    </td>
+
+
+                    <td>{{ data.address }}</td>
+                    <td>
+                      <a nz-popconfirm nzPopconfirmTitle="Sure to delete?" (nzOnConfirm)="deleteRow(data.id)">Delete</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </nz-table>
+            </div>
+            <div class="col-lg-4">
+                <div class="cart-page-inner">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="coupon">
+                                <input type="text" placeholder="Coupon Code">
+                                <button>Apply Code</button>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="cart-summary">
+                                <div class="cart-content">
+                                    <h1>Cart Summary</h1>
+                                    <p>Sub Total<span>$99</span></p>
+                                    <p>Shipping Cost<span>$1</span></p>
+                                    <h2>Grand Total<span>$100</span></h2>
+                                </div>
+                                <div class="cart-btn">
+                                    <button>Update Cart</button>
+                                    <button>Checkout</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Cart End -->
